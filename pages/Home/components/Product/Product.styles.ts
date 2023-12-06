@@ -1,21 +1,21 @@
 import { StyleSheet } from "react-native"
+import { MyPalette } from "../../../../shared/colors/MyPalette";
 
 export const ProductStyles = StyleSheet.create({
     product: {
         height: 150,
         width: '98%',
-        backgroundColor: '#ccc',
-        marginBottom: 40,
+        backgroundColor: MyPalette.gray,
         borderRadius: 30,
         display: 'flex',
         padding: 20,
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
-        shadowColor: "#000000",
+        shadowColor: MyPalette.black,
         shadowOffset: {
-        width: 0,
-        height: 4,
+            width: 0,
+            height: 4,
         },
         shadowOpacity:  0.19,
         shadowRadius: 5.62,
@@ -96,7 +96,7 @@ export const ProductStyles = StyleSheet.create({
     purchase: {
         display: "flex",
         flexDirection: "row",
-        backgroundColor: "#5b92e5",
+        backgroundColor: MyPalette.lightBlue,
         padding: 6,
         borderRadius: 10
     },

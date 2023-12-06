@@ -1,21 +1,20 @@
 import { View, Image, Text } from "react-native";
-import { ProductStyles } from "./product.styles";
-import { ProductInterface } from "../../../interfaces/products.interface";
+import { ProductInterface } from "../../../../interfaces/products.interface";
+import { ProductStyles } from "./Product.styles";
 
-import pizza from "../../../assets/images/pizza.png"
-import favourite from "../../../assets/images/favourite.png"
-import not_favourite from "../../../assets/images/not_favourite.png"
-import cart from "../../../assets/images/cart.png"
-import newItem from "../../../assets/images/new.png"
+import favourite from "../../../../assets/images/favourite.png"
+import not_favourite from "../../../../assets/images/not_favourite.png"
+import cart from "../../../../assets/images/cart.png"
+import newItem from "../../../../assets/images/new.png"
 
 export default function Product(props: ProductProps) {
-    const {isFavourite, isNew, name, price, oldPrice, desc} = props.data;
+    const {isFavourite, isNew, name, price, oldPrice, desc, image} = props.data;
 
     return (
         <View style={ProductStyles.productWrap}>
             <View style={ProductStyles.product}>
                 <View style={ProductStyles.imageWrapper}>
-                    <Image style={ProductStyles.productImage} source={pizza} />
+                    <Image style={ProductStyles.productImage} source={image} />
                     {isNew &&
                         <Image style={ProductStyles.new} source={newItem} />
                     }
@@ -60,5 +59,5 @@ export default function Product(props: ProductProps) {
 }
 
 interface ProductProps {
-    data: ProductInterface
+    data: ProductInterface,
 }

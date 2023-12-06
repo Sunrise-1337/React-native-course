@@ -1,12 +1,12 @@
 import { Platform, StatusBar, StyleSheet} from 'react-native';
+import { MyPalette } from './shared/colors/MyPalette';
 
 export const AppStyles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#fff',
+        backgroundColor: MyPalette.white,
         alignItems: 'center',
         justifyContent: 'center',
-        padding: 20,
-        paddingTop: (Platform.OS === "android" ? StatusBar.currentHeight : 0) + 20
+        paddingTop: (Platform.OS === "android" ? StatusBar.currentHeight : 0)
     },
 });
