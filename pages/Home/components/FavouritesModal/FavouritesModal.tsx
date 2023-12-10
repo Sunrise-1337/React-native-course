@@ -1,6 +1,8 @@
 import { Modal, View, Text } from "react-native";
 import { CustomTouchable } from "../../../../shared/components/CustomTouchable/CustomTouchable";
-import { FavouritesModalStyle } from "./FavoutiresModal.styles";
+import { FavouritesModalStyle } from "./FavouritesModal.styles";
+import { Slider } from "./Slider/Slider";
+import { promos } from "../../../../server-mock/promos.mock";
 
 export const FavouritesModal: React.FC<FavouritesModalProps> = ({isVisible, setIsVisible}) => {
     const hideModal = (): void => {
@@ -13,10 +15,8 @@ export const FavouritesModal: React.FC<FavouritesModalProps> = ({isVisible, setI
             transparent={true}
             visible={isVisible}
             onRequestClose={hideModal}>
-            <CustomTouchable onPress={hideModal}
-                        style={FavouritesModalStyle.close_area} 
-                        rippleFullCoverage/>
             <View style={FavouritesModalStyle.inner_container}>
+                <Slider data={promos}/>
                 <View style={FavouritesModalStyle.close_button}>
                     <CustomTouchable onPress={hideModal} rippleFullCoverage borderless={false}>
                         <Text>
