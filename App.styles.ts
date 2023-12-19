@@ -3,10 +3,10 @@ import { MyPalette } from './shared/colors/MyPalette';
 
 export const AppStyles = StyleSheet.create({
     container: {
-        flex: 1,
-        backgroundColor: MyPalette.white,
-        alignItems: 'center',
-        justifyContent: 'center',
-        paddingTop: (Platform.OS === "android" ? StatusBar.currentHeight : 0)
+        marginTop: (Platform.OS === "android" ? StatusBar.currentHeight : 0)
     },
+
+    stackWrapper: {
+        backgroundColor: MyPalette.white
+    }
 });

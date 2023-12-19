@@ -1,11 +1,11 @@
 import { View, Image, Text } from "react-native";
-import { ProductInterface } from "../../../../interfaces/products.interface";
+import { ProductInterface } from "../../../../../interfaces/products.interface";
 import { ProductStyles } from "./Product.styles";
 
-import favourite from "../../../../assets/images/favourite.png"
-import not_favourite from "../../../../assets/images/not_favourite.png"
-import cart from "../../../../assets/images/cart.png"
-import newItem from "../../../../assets/images/new.png"
+import favourite from '../../../../../assets/images/favourite.png'
+import not_favourite from "../../../../../assets/images/not_favourite.png"
+import cart from "../../../../../assets/images/cart.png"
+import newItem from "../../../../../assets/images/new.png"
 
 export default function Product(props: ProductProps) {
     const {isFavourite, isNew, name, price, oldPrice, desc, image} = props.data;

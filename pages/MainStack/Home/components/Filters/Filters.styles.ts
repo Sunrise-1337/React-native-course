@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native"
-import { MyPalette } from "../../../../shared/colors/MyPalette";
+import { MyPalette } from "../../../../../shared/colors/MyPalette";
 
 export const FiltersStyle = StyleSheet.create({
     filter: {

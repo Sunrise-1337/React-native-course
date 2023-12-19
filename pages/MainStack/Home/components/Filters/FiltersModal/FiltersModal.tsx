@@ -1,10 +1,10 @@
 import { Modal, View, Text } from "react-native";
-import { CustomTouchable } from "../../../../../shared/components/CustomTouchable/CustomTouchable";
+import { CustomTouchable } from "../../../../../../shared/components/CustomTouchable/CustomTouchable";
 import { FiltersModalStyle } from "./FiltersModal.styles";
 
 import BouncyCheckbox from "react-native-bouncy-checkbox";
 import { useContext } from "react";
-import { FiltersContext } from "../../../../../contexts/filters-context/filters-context";
+import { FiltersContext } from "../../../../../../contexts/filters-context/filters-context";
 
 export const FiltersModal: React.FC<FavouritesModalProps> = ({isVisible, setIsVisible}) => {
     const {filtersState, setFiltersState} = useContext(FiltersContext)

@@ -1,7 +1,7 @@
 import { StyleSheet } from "react-native"
-import { MyPalette } from "../../../../shared/colors/MyPalette";
+import { MyPalette } from "../../../shared/colors/MyPalette";
 
-export const FavouritesModalStyle = StyleSheet.create({
+export const PromotionsModalStyle = StyleSheet.create({
     inner_container: {
         backgroundColor: MyPalette.gray,
         height: '100%',
