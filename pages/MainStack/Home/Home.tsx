@@ -56,12 +56,18 @@ export default function Home({ navigation }: HomeProps) {
         setProducts(updatedProducts)
     },
 
+    toActOnRequest = (): void => {
+        if (searchRequest) {
+            toFilterProductsBySearchRequest()
+        }
+    },
+
     updateProductsList = (): void => {
         if (isListUpdatedOnEnd || !products.length) return
         
         setIsListUpdatedOnEnd(true)
         setProducts(prev => [...prev, ...extraProducts])
-        toFilterProductsBySearchRequest()
+        toActOnRequest()
     },
 
     onRefresh = (): void => {
@@ -74,7 +80,7 @@ export default function Home({ navigation }: HomeProps) {
             setProducts(productsOnRefresh)
             setIsListUpdatedOnEnd(false)
             setIsRefreshing(false);
-            toFilterProductsBySearchRequest()
+            toActOnRequest()
         }, 3000);
     },
     
