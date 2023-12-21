@@ -1,10 +1,10 @@
 import { View, FlatList, Image, Dimensions, NativeSyntheticEvent, NativeScrollEvent, Alert, Share } from "react-native";
-import { CustomTouchable } from "../../../../../shared/components/CustomTouchable/CustomTouchable";
+import { CustomTouchable } from "../../../../shared/components/CustomTouchable/CustomTouchable";
 import { SliderStyle } from "./Slider.styles";
-import { PromoInterface } from "../../../../../interfaces/promo.interface";
+import { PromoInterface } from "../../../../interfaces/promo.interface";
 
 import { useEffect, useRef, useState } from "react";
-import { promos } from "../../../../../server-mock/promos.mock";
+import { promos } from "../../../../server-mock/promos.mock";
 
 export const Slider: React.FC<FavouritesModalProps> = ({data}) => {
     const {width} = Dimensions.get('window'),

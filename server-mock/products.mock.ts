@@ -171,5 +171,6 @@ export const productsOnRefresh: ProductInterface[] = [
         isFavourite: true,
         image: pizza,
         desc: 'Spinach, mushrooms, black olives, feta cheese'
-    }
+    },
+    ...productsArray
 ]
