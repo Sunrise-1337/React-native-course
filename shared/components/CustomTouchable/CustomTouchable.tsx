@@ -1,6 +1,7 @@
 import { ReactNode } from "react";
 import { Platform, Pressable, StyleProp, ViewStyle } from "react-native";
 import { DeveloperConstants } from "../../../constants/developer.constants";
+import { MyPalette } from "../../colors/MyPalette";
 
 export const CustomTouchable: React.FC<TouchableProps> = ({
     onPress,
@@ -29,7 +30,7 @@ export const CustomTouchable: React.FC<TouchableProps> = ({
             android_ripple={
                 !withoutFeedback 
                 ? {
-                    color: 'rgb(210, 230, 255)',
+                    color: MyPalette.rippleColor,
                     radius: rippleFullCoverage ? DeveloperConstants.absurdlyBigNumber : radius || 20,
                     borderless: borderless || true,
                     foreground: false

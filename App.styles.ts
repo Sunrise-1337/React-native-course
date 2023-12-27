@@ -14,7 +14,7 @@ export const AppStyles = StyleSheet.create({
         height: '100%',
         position: 'absolute',
         width: '100%',
-        backgroundColor: 'white',
+        backgroundColor: MyPalette.white,
         top: 0,
         bottom: 0,
         right: 0, 

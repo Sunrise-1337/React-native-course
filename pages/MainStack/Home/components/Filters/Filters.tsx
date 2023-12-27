@@ -1,10 +1,11 @@
 import { useState } from "react";
-import { View, Image, TextInput} from "react-native";
+import { View, Image, TextInput, Text} from "react-native";
 
 import favourites from '../../../../../assets/images/favourite.png'
 import search from '../../../../../assets/images/search.png'
 import close_button from '../../../../../assets/images/close_button.png'
 import filter from '../../../../../assets/images/filter.png'
+import activePizza from '../../../../../assets/images/tabIcons/pizzaIconFocused.png'
 
 import { CustomTouchable } from "../../../../../shared/components/CustomTouchable/CustomTouchable";
 import { FiltersStyle } from "./Filters.styles";
@@ -45,7 +46,7 @@ export const Filters: React.FC<FiltersProps> = ({onRequestInput}) => {
         <>
             <View style={FiltersStyle.filter}>
                 {isSearchBarVisible
-                    && 
+                    ?
                         <>
                             <View style={FiltersStyle.input_wrapper}>
                                 <TextInput 
@@ -64,16 +65,25 @@ export const Filters: React.FC<FiltersProps> = ({onRequestInput}) => {
                                 </CustomTouchable>
                             </View>
                         </>
+                    :
+                        <View style={FiltersStyle.logo}>
+                        <Image source={activePizza} style={FiltersStyle.icon}/>
+                            <Text style={FiltersStyle.logo_text}>
+                                Pizza
+                            </Text>
+                        </View>
                 }
-                <View style={FiltersStyle.icon_wrapper}>
-                    <CustomTouchable onPress={toOpenFavouritesModal}>
-                        <Image source={favourites} style={FiltersStyle.icon}/>
-                    </CustomTouchable>
-                </View>
-                <View style={FiltersStyle.icon_wrapper}>
-                    <CustomTouchable onPress={toToggleSearchBarVisibility}>
-                        <Image source={search}  style={FiltersStyle.icon}/>
-                    </CustomTouchable>
+                <View style={FiltersStyle.icon_group}>
+                    <View style={FiltersStyle.icon_wrapper}>
+                        <CustomTouchable onPress={toOpenFavouritesModal}>
+                            <Image source={favourites} style={FiltersStyle.icon}/>
+                        </CustomTouchable>
+                    </View>
+                    <View style={FiltersStyle.icon_wrapper}>
+                        <CustomTouchable onPress={toToggleSearchBarVisibility}>
+                            <Image source={search}  style={FiltersStyle.icon}/>
+                        </CustomTouchable>
+                    </View>
                 </View>
             </View>
             <FiltersModal isVisible={isFiltersModalVisible} setIsVisible={setIsFiltersModalVisible} />

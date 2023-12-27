@@ -1,6 +1,6 @@
-import { useEffect, useState, useContext, useMemo } from "react";
+import { useEffect, useState, useContext } from "react";
 import { FlatList, Text, RefreshControl, View } from "react-native";
-import { ProductInterface } from "../../../interfaces/products.interface";
+import { ProductModel } from "../../../models/products.model";
 import { extraProducts, productsArray, productsOnRefresh } from "../../../server-mock/products.mock";
 import Product from "./components/Product/Product";
 import { HomeStyles } from "./Home.styles";
@@ -14,9 +14,11 @@ import { StackDataType } from "../../../interfaces/stack-navigation-data.type";
 import { PizzaNavigationData } from "../SinglePizza/SinglePizza";
 import { routePropsTypes } from "../../../interfaces/route-props-data.type";
 import { DrawerScreenProps } from "@react-navigation/drawer";
+import { isLastElementInArray } from "../../../helper/helper";
+import { FlatListStyles } from "../../../shared/styles/FlatList.styles";
 
 export default function Home({ navigation }: HomeProps) {
-    const [products, setProducts] = useState<ProductInterface[]>([]),
+    const [products, setProducts] = useState<ProductModel[]>([]),
         [isRefreshing, setIsRefreshing] = useState<boolean>(false),
         [isListUpdatedOnEnd, setIsListUpdatedOnEnd] = useState<boolean>(false),
         [isListRefreshed, setIsListRefreshed] = useState<boolean>(false),
@@ -32,12 +34,8 @@ export default function Home({ navigation }: HomeProps) {
         toFilterProductsBySearchRequest()
     }, [filtersState, searchRequest])
 
-    const isLastElementInProductsArray = (index: number): boolean => {
-        return index === products.length - 1
-    },
-
-    toFilterProductsBySearchRequest = () => {  
-        let productsBase: ProductInterface[] = isListRefreshed ? productsOnRefresh : productsArray,
+    const toFilterProductsBySearchRequest = () => {  
+        let productsBase: ProductModel[] = isListRefreshed ? productsOnRefresh : productsArray,
             updatedProducts = isListUpdatedOnEnd ? [...productsBase, ...extraProducts] : productsBase;
         
         if (filtersState?.isNew) {
@@ -84,7 +82,7 @@ export default function Home({ navigation }: HomeProps) {
         }, 3000);
     },
     
-    onPizzaClick = (pizza: ProductInterface): void => {
+    onPizzaClick = (pizza: ProductModel): void => {
         navigationHook.navigate(RoutesConstants.singlePizzaScreen, {
             pizza
         })
@@ -101,14 +99,14 @@ export default function Home({ navigation }: HomeProps) {
             </CustomTouchable>
             <>
                 <Filters onRequestInput={setSearchRequest}/>
-                <FlatList style={HomeStyles.home}
+                <FlatList style={FlatListStyles.wrap}
                     data={products}
                     renderItem={({item, index}) => {
                         return (
                             <CustomTouchable 
                                     style={
-                                        !isLastElementInProductsArray(index)
-                                            ? HomeStyles.product__margin_wrapper
+                                        !isLastElementInArray(index, products)
+                                            ? FlatListStyles.element__margin_wrapper
                                             : null
                                     }
                                     onPress={() => onPizzaClick(item)}
@@ -118,7 +116,7 @@ export default function Home({ navigation }: HomeProps) {
                         )
                     }}
                     ListEmptyComponent={() => <Text>No results</Text>}
-                    contentContainerStyle={HomeStyles.product__wrapper}
+                    contentContainerStyle={FlatListStyles.element__wrapper}
                     keyExtractor={item => '' + item.id}
                     onEndReached={() => updateProductsList()}
                     refreshControl={

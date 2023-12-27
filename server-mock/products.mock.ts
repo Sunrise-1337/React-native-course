@@ -1,7 +1,7 @@
-import { ProductInterface } from "../interfaces/products.interface";
+import { ProductModel } from "../models/products.model";
 import pizza from "../assets/images/product/pizza.png"
 
-export const productsArray: ProductInterface[] = [
+export const productsArray: ProductModel[] = [
     {
         name: 'Pizza 1',
         id: 1,
@@ -101,7 +101,7 @@ export const productsArray: ProductInterface[] = [
     }
 ]
 
-export const extraProducts: ProductInterface[] = [
+export const extraProducts: ProductModel[] = [
     {
         name: 'Pizza 11',
         id: 11,
@@ -152,7 +152,7 @@ export const extraProducts: ProductInterface[] = [
       }
 ]
 
-export const productsOnRefresh: ProductInterface[] = [
+export const productsOnRefresh: ProductModel[] = [
     {
         name: 'Pizza -1',
         id: -1,
