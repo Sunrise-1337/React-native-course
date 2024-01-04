@@ -1,10 +1,11 @@
 import { Text, Image, View } from "react-native";
 import React from "react";
 import { useRoute } from "@react-navigation/native";
-import { ProductInterface } from "../../../interfaces/products.interface";
+import { ProductModel } from "../../../models/products.model";
 import { RoutesConstants } from "../../../constants/routes.constants";
 import { RoutePropsData } from "../../../interfaces/route-props-data.type";
 import { SinglePizzaStyles } from "./SinglePizza.styles";
+import { BuyButton } from "../../../shared/components/BuyButton/BuyButton";
 
 export default function SinglePizza() {
     const route = useRoute<RoutePropsData<RoutesConstants.singlePizzaScreen>>(),
@@ -16,6 +17,7 @@ export default function SinglePizza() {
             <Text style={SinglePizzaStyles.title}>
                 {pizzaData.name}
             </Text>
+            <BuyButton product={pizzaData} />
             <Text style={SinglePizzaStyles.description}>
                 {pizzaData.desc}
             </Text>
@@ -24,5 +26,5 @@ export default function SinglePizza() {
 }
 
 export interface PizzaNavigationData {
-    pizza: ProductInterface
+    pizza: ProductModel
 }

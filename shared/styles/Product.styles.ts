@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native"
-import { MyPalette } from "../../../../../shared/colors/MyPalette";
+import { MyPalette } from "../colors/MyPalette";
 
 export const ProductStyles = StyleSheet.create({
     product: {
@@ -23,7 +23,8 @@ export const ProductStyles = StyleSheet.create({
     },
     productWrap: {
         display: "flex",
-        alignItems: "center"
+        alignItems: "center",
+        paddingBottom: 15
     },
     infoWrap: {
         display: "flex",
@@ -88,7 +89,8 @@ export const ProductStyles = StyleSheet.create({
     bottomTextRow: {
         display: "flex",
         flexDirection: "row",
-        justifyContent: "space-between",
+        justifyContent: "flex-end",
+        gap: 20,
         alignItems: "center",
         width: "100%",
     },
@@ -98,7 +100,7 @@ export const ProductStyles = StyleSheet.create({
         flexDirection: "row",
         backgroundColor: MyPalette.lightBlue,
         padding: 6,
-        borderRadius: 10
+        borderRadius: 10,
     },
     purchase__text: {
         fontSize: 15
@@ -108,4 +110,24 @@ export const ProductStyles = StyleSheet.create({
         width: 20,
         height: 20
     },
+
+    counter_display: {
+        width: 10,
+        textAlign: 'center',
+        verticalAlign: 'middle'
+    },
+
+    stepper_button: {
+        height: 20,
+        width: 18,
+        textAlign: 'center',
+        verticalAlign: 'middle',
+        color: MyPalette.white,
+        fontSize: 15
+    },
+
+    delete: {
+        width: 20,
+        height: 20
+    }
 });

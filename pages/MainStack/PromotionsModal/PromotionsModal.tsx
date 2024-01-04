@@ -6,7 +6,7 @@ import { promos } from "../../../.../../server-mock/promos.mock";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { RoutesConstants } from "../../../constants/routes.constants";
 import { RootStackParamList, StackDataType } from "../../../interfaces/stack-navigation-data.type";
-import { RoutePropsData, routePropsTypes } from "../../../interfaces/route-props-data.type";
+import { routePropsTypes } from "../../../interfaces/route-props-data.type";
 
 export const PromotionsModal: React.FC<FavouritesModalProps> = (navigation) => {
     

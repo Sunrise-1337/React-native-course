@@ -1,6 +1,6 @@
 import { RouteProp } from "@react-navigation/native";
 import { RoutesConstants } from "../constants/routes.constants";
-import { ProductInterface } from "./products.interface";
+import { ProductModel } from "../models/products.model";
 
 //  Это все для того, чтобы в routePropsTypes ключами могли быть 
 //  только значения из энама RoutesConstants. При этом они опциональные
@@ -16,8 +16,10 @@ type optionalRoutesConstantsKeys = {
 
 export interface routePropsTypes extends optionalRoutesConstantsKeys {
     SinglePizza: {
-        pizza: ProductInterface
+        pizza: ProductModel
     },
+
+    Cart:{},
 
     Promotions: {},
 

@@ -1,18 +1,21 @@
 import { View, Image, Text } from "react-native";
-import { ProductModel } from "../../../../../models/products.model";
-import { ProductStyles } from "../../../../../shared/styles/Product.styles"
+import { ProductModel } from "../../../models/products.model";
+import { ProductStyles } from '../../../shared/styles/Product.styles'
 
-import favourite from '../../../../../assets/images/favourite.png'
-import not_favourite from "../../../../../assets/images/not_favourite.png"
-import cart from "../../../../../assets/images/cart.png"
-import newItem from "../../../../../assets/images/new.png"
-import { CustomTouchable } from "../../../../../shared/components/CustomTouchable/CustomTouchable";
-import CartStore from "../../../../../stores/CartStore";
+import favourite from '../../../assets/images/favourite.png'
+import not_favourite from "../../../assets/images/not_favourite.png"
+import cross from "../../../assets/images/close_button.png"
+import newItem from "../../../assets/images/new.png"
+
+import { CustomTouchable } from "../../../shared/components/CustomTouchable/CustomTouchable"
+import { BuyButton } from "../../../shared/components/BuyButton/BuyButton";
+
+import CartStore from "../../../stores/CartStore";
 import { observer } from "mobx-react";
-import { BuyButton } from "../../../../../shared/components/BuyButton/BuyButton";
 
 function Product(props: ProductProps) {
-    const {isFavourite, isNew, name, price, oldPrice, desc, image} = props.data
+    const pizzaData = props.data,
+        {isFavourite, isNew, name, price, oldPrice, desc, image} = pizzaData
 
     return (
         <View style={ProductStyles.productWrap}>
@@ -46,10 +49,10 @@ function Product(props: ProductProps) {
                         }
                     </View>
                     <View style={ProductStyles.bottomTextRow}>
-                        <Text style={ProductStyles.desc} ellipsizeMode="tail" numberOfLines={1}>
-                            {desc}
-                        </Text>
-                        <BuyButton product={props.data} />
+                        <BuyButton product={pizzaData} />
+                        <CustomTouchable onPress={() => CartStore.toDeleteDishTypeFromOrder(pizzaData)}>
+                            <Image source={cross} style={ProductStyles.delete}/>
+                        </CustomTouchable>
                     </View>
                 </View>
             </View>

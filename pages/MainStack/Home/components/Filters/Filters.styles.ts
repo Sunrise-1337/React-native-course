@@ -3,15 +3,32 @@ import { MyPalette } from "../../../../../shared/colors/MyPalette";
 
 export const FiltersStyle = StyleSheet.create({
     filter: {
-        height: 40,
+        height: 60,
         paddingHorizontal: 15,
-        paddingVertical: 5,
+        paddingVertical: 15,
         width: "100%",
         display: "flex",
         flexDirection: "row",
-        justifyContent: "flex-end",
+        justifyContent: "space-between",
         alignItems: 'center',
         position: 'relative'
+    },
+
+    logo: {
+        paddingLeft: 20,
+        display: 'flex',
+        flexDirection: 'row',
+        gap: 10
+    },
+
+    logo_text: {
+        fontStyle: 'italic',
+        fontSize: 25,
+    },
+
+    icon_group: {
+        display: 'flex',
+        flexDirection: 'row'
     },
 
     icon: {

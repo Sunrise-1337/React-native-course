@@ -1,13 +1,7 @@
-import { Platform, StatusBar, StyleSheet} from 'react-native';
+import { StyleSheet} from 'react-native';
+import { MyPalette } from '../../../shared/colors/MyPalette';
 
 export const HomeStyles = StyleSheet.create({
-    home: {
-        flex: 1,
-        width: '100%',
-        display: 'flex',
-        paddingHorizontal: 20,
-    },
-
     wrap: {
         position: 'relative',
         height: '100%',
@@ -19,19 +13,11 @@ export const HomeStyles = StyleSheet.create({
         top: '50%',
         height: 50,
         width: 50,
-        backgroundColor: 'red',
+        backgroundColor: MyPalette.red,
         elevation: 20,
         zIndex: 20,
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center'
     },
-
-    product__wrapper: {
-        paddingVertical: 20
-    },
-
-    product__margin_wrapper: {
-        marginBottom: 30
-    }
 });
