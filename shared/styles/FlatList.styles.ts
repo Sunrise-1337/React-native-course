@@ -5,7 +5,6 @@ export const FlatListStyles = StyleSheet.create({
         flex: 1,
         width: '100%',
         display: 'flex',
-        paddingHorizontal: 20,
     },
 
     cart_wrap: {

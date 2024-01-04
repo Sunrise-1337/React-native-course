@@ -4,10 +4,7 @@ import { ProductStyles } from "../../../../../shared/styles/Product.styles"
 
 import favourite from '../../../../../assets/images/favourite.png'
 import not_favourite from "../../../../../assets/images/not_favourite.png"
-import cart from "../../../../../assets/images/cart.png"
 import newItem from "../../../../../assets/images/new.png"
-import { CustomTouchable } from "../../../../../shared/components/CustomTouchable/CustomTouchable";
-import CartStore from "../../../../../stores/CartStore";
 import { observer } from "mobx-react";
 import { BuyButton } from "../../../../../shared/components/BuyButton/BuyButton";
 
