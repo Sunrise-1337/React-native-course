@@ -39,7 +39,7 @@ export const Tabs = () => {
     return (
         <Tab.Navigator
                 screenOptions={{
-                    headerShown: false,
+                    headerShown: false
                 }}>
             <Tab.Screen name="Home"
                         component={Drawer}

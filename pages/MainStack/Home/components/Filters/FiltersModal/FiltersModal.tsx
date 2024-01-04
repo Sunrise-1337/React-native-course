@@ -3,20 +3,16 @@ import { CustomTouchable } from "../../../../../../shared/components/CustomTouch
 import { FiltersModalStyle } from "./FiltersModal.styles";
 
 import BouncyCheckbox from "react-native-bouncy-checkbox";
-import { useContext } from "react";
-import { FiltersContext } from "../../../../../../contexts/filters-context/filters-context";
+import FiltersStore from "../../../../../../stores/FiltersStore";
+import { observer } from "mobx-react";
 
-export const FiltersModal: React.FC<FavouritesModalProps> = ({isVisible, setIsVisible}) => {
-    const {filtersState, setFiltersState} = useContext(FiltersContext)
-
+const FiltersModal: React.FC<FavouritesModalProps> = ({isVisible, setIsVisible}) => {
     const hideModal = (): void => {
         setIsVisible(false)
     },
 
-    updateIsNewValue = (value: boolean) => {
-        setFiltersState(prev => {
-            return {...prev, isNew: value}
-        })
+    updateIsNewValue = () => {
+        FiltersStore.toToggleIsNewFilter()
     }
 
     return (
@@ -29,13 +25,14 @@ export const FiltersModal: React.FC<FavouritesModalProps> = ({isVisible, setIsVi
                 <Text>
                    Filters
                 </Text>
-                <View style={FiltersModalStyle.filter_section}>
-                    <BouncyCheckbox onPress={updateIsNewValue}
-                            isChecked={filtersState?.isNew} />
-                    <Text>
-                        Only new
-                    </Text>
-                </View>
+                <BouncyCheckbox isChecked={FiltersStore.filters.isNew}  
+                    style={FiltersModalStyle.filter_section} 
+                    onPress={updateIsNewValue}
+                    textComponent={        
+                        <Text>
+                            Only new
+                        </Text>
+                    }/>
             </View>
             <CustomTouchable onPress={hideModal}
                         style={FiltersModalStyle.close_area} 
@@ -43,6 +40,8 @@ export const FiltersModal: React.FC<FavouritesModalProps> = ({isVisible, setIsVi
         </Modal>
     )
 }
+
+export default observer(FiltersModal)
 
 interface FavouritesModalProps {
     isVisible: boolean,

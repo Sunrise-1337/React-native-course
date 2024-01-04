@@ -20,7 +20,8 @@ export const FiltersModalStyle = StyleSheet.create({
         flexDirection: 'row',
         display: 'flex',
         alignItems: 'center',
-        marginVertical: 20
+        marginVertical: 20,
+        gap: 10
     },
 
     close_button: {
