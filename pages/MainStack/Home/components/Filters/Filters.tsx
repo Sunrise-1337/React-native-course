@@ -12,13 +12,17 @@ import { FiltersStyle } from "./Filters.styles";
 import { useNavigation } from "@react-navigation/native";
 import { RoutesConstants } from "../../../../../constants/routes.constants";
 import { StackDataType } from "../../../../../interfaces/stack-navigation-data.type";
-import { FiltersModal } from "./FiltersModal/FiltersModal";
+import FiltersModal from "./FiltersModal/FiltersModal";
+import Animated, { BounceIn, BounceOut, FadeIn, FadeOut } from "react-native-reanimated";
 
 export const Filters: React.FC<FiltersProps> = ({onRequestInput}) => {
     const [isSearchBarVisible, setIsSearchBarVisible] = useState<boolean>(false),
         [inputText, setInputText] = useState<string>(''),        
         [isFiltersModalVisible, setIsFiltersModalVisible] = useState<boolean>(false),
         navigation = useNavigation<StackDataType<{}>>();
+
+
+    const logoFadeIn = FadeIn.duration(1000).delay(300);
 
     const toToggleSearchBarVisibility = (): void => {
         setIsSearchBarVisible(prev => !prev)
@@ -48,7 +52,9 @@ export const Filters: React.FC<FiltersProps> = ({onRequestInput}) => {
                 {isSearchBarVisible
                     ?
                         <>
-                            <View style={FiltersStyle.input_wrapper}>
+                            <Animated.View style={FiltersStyle.input_wrapper}
+                                        entering={BounceIn}
+                                        exiting={BounceOut}>
                                 <TextInput 
                                     style={FiltersStyle.input}
                                     onChangeText={onTextInput}
@@ -58,7 +64,7 @@ export const Filters: React.FC<FiltersProps> = ({onRequestInput}) => {
                                     <Image source={close_button} 
                                             style={FiltersStyle.input_icon} />
                                 </CustomTouchable>
-                            </View>
+                            </Animated.View>
                             <View style={FiltersStyle.icon_wrapper}>
                                 <CustomTouchable onPress={toOpenFiltersModal}>
                                     <Image source={filter} style={FiltersStyle.icon}/>
@@ -66,12 +72,14 @@ export const Filters: React.FC<FiltersProps> = ({onRequestInput}) => {
                             </View>
                         </>
                     :
-                        <View style={FiltersStyle.logo}>
-                        <Image source={activePizza} style={FiltersStyle.icon}/>
+                        <Animated.View style={FiltersStyle.logo}
+                                    entering={logoFadeIn}
+                                    exiting={FadeOut}>
+                            <Image source={activePizza} style={FiltersStyle.icon}/>
                             <Text style={FiltersStyle.logo_text}>
                                 Pizza
                             </Text>
-                        </View>
+                        </Animated.View>
                 }
                 <View style={FiltersStyle.icon_group}>
                     <View style={FiltersStyle.icon_wrapper}>

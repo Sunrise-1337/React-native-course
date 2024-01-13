@@ -19,10 +19,11 @@ export const ProductStyles = StyleSheet.create({
         },
         shadowOpacity:  0.19,
         shadowRadius: 5.62,
-        elevation: 6
+        elevation: 6,
     },
     productWrap: {
         display: "flex",
+        paddingHorizontal: 20,
         alignItems: "center",
         paddingBottom: 15
     },
