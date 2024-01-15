@@ -13,8 +13,15 @@ import settingsIconFocused from '../../assets/images/tabIcons/settingsIconFocuse
 
 import cartIcon from '../../assets/images/tabIcons/cartIcon.png'
 import cartIconFocused from '../../assets/images/tabIcons/cartIconFocused.png'
+
+import profileIcon from '../../assets/images/tabIcons/profileIcon.png'
+import profileIconFocused from '../../assets/images/tabIcons/profileIconFocused.png'
+
+
 import { CartTab } from "./CartTab/CartTab";
 import { Cart } from "../../pages/Cart/Cart";
+import { Profile } from "../../pages/ProfileStack/Profile/Profile";
+import ProfileStack from "../stacks/ProfileStack";
 
 const Tab = createBottomTabNavigator();
 
@@ -60,6 +67,14 @@ export const Tabs = () => {
                         options={{
                             tabBarIcon({focused}) {
                                 return getTabOfCertainType(focused, settingsIcon, settingsIconFocused)
+                            },
+                        }}>
+            </Tab.Screen>
+            <Tab.Screen name="Profile"
+                        component={ProfileStack}
+                        options={{
+                            tabBarIcon({focused}) {
+                                return getTabOfCertainType(focused, profileIcon, profileIconFocused)
                             },
                         }}>
             </Tab.Screen>
